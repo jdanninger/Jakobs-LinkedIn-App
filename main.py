@@ -12,6 +12,7 @@ st.set_page_config(
 
 st.title("LinkedIn Profile Review")
 st.subheader("Get a rating for your LinkedIn profile")
+email = st.secrets["email"]
 
 def write_score(score, label):
     if score >= 7.5:
@@ -48,6 +49,7 @@ with st.form(key="profile_form"):
 
 # form handling
 if submit_button:
+    st.success("Loading... (this may take a second :pray:)")
     if username:
         if re.fullmatch(r"^(?!.*LinkedIn).{3,100}$", username):
             handle_profile(username)

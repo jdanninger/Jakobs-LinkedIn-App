@@ -1,12 +1,10 @@
 from linkedin_api import Linkedin
-from dotenv import load_dotenv
-import os
+import streamlit as st
 
 
 def get_profile(profile_id):
-    load_dotenv()
-    email = os.getenv("email")
-    password = os.getenv("pw")
+    email = st.secrets["email"]
+    password = st.secrets["pw"]
 
     api = Linkedin(email, password)
     returnMe = {}
@@ -61,6 +59,5 @@ def get_profile(profile_id):
 
 
 
-print(str(get_profile("jakob-danninger")))
 
 

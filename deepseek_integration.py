@@ -1,15 +1,13 @@
 from openai import OpenAI
-import os
-from dotenv import load_dotenv
+import streamlit as st
 from loading_profiles import get_profile
 
 
 
 
 def get_response(profile):
-    load_dotenv()
-    api_key = os.getenv("api_key")
-    prompt = os.getenv("prompt")
+    api_key = st.secrets["api_key"]
+    prompt = st.secrets["prompt"]
 
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
     content = prompt + "\n" + str(profile)
