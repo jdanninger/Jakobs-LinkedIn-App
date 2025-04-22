@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+from loading_profiles import get_profile
 
 # this app is meant to rate people's linkendIn profiles
 st.set_page_config(
@@ -11,6 +12,13 @@ st.set_page_config(
 st.title("LinkedIn Profile Review")
 st.subheader("Get a rating for your LinkedIn profile")
 
+
+def handle_profile(profile_name):
+    profile = get_profile(profile_name)
+    if not profile:
+        st.error("Profile not found or private :cry:")
+        return
+    st.success("Profile found! :partying_face:")
 
 # Intial form
 with st.form(key="profile_form"):
@@ -24,17 +32,14 @@ with st.form(key="profile_form"):
 if submit_button:
     if username:
         if re.fullmatch(r"^(?!.*LinkedIn).{3,100}$", username):
-            rating = 4.5  # Simulated rating
-            st.write(f"Your LinkedIn profile rating is: {rating}/5")
+            handle_profile(username)
+
         else:
             st.error(
                 "Invalid username."
             )
     else:
         st.error("Please enter a valid LinkedIn profile link.")
-
-
-
 
 
 st.markdown(
