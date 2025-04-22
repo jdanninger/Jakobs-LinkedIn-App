@@ -28,14 +28,12 @@ else
     exit 1
 fi
 
-# Start Streamlit on port 8501 in the background
 echo "🚀 Launching Streamlit on port $PORT..."
-streamlit run "$STREAMLIT_FILE" --server.port "$PORT" &
+nohup streamlit run "$STREAMLIT_FILE" --server.port "$PORT" > streamlit.log 2>&1 &
 
-# Give it a few seconds to spin up
-sleep 5
+sleep 5  # Give streamlit time to start
 
-# Start ngrok with the custom domain
-echo "🌐 Starting ngrok tunnel: https://$NGROK_DOMAIN.ngrok.app"
-nohup ngrok http http://localhost:8501 --hostname=jakobs-linkedin-reviewer.ngrok.app > ngrok.log 2>&1 &
+echo "🌐 Starting ngrok tunnel in background..."
+nohup ngrok http http://localhost:$PORT --hostname="$NGROK_DOMAIN.ngrok.app" > ngrok.log 2>&1 &
+
 
