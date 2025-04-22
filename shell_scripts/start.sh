@@ -37,4 +37,5 @@ sleep 5
 
 # Start ngrok with the custom domain
 echo "🌐 Starting ngrok tunnel: https://$NGROK_DOMAIN.ngrok.app"
-ngrok http http://localhost:$PORT --hostname="$NGROK_DOMAIN.ngrok.app"
+nohup ngrok http http://localhost:8501 --hostname=jakobs-linkedin-reviewer.ngrok.app > ngrok.log 2>&1 &
+
