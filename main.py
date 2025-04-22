@@ -12,7 +12,6 @@ st.set_page_config(
 
 st.title("LinkedIn Profile Review")
 st.subheader("Get a rating for your LinkedIn profile")
-email = st.secrets["email"]
 
 def write_score(score, label):
     if score >= 7.5:

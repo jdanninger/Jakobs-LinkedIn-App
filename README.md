@@ -1,0 +1,1 @@
+# Make sure to make your own .streamlit folder! Inside it include secrets.toml with api_key, pw=, email=, prompt = 
