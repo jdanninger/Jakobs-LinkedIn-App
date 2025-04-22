@@ -22,7 +22,7 @@ def handle_profile(profile_name):
 
 # Intial form
 with st.form(key="profile_form"):
-    st.write("Please enter your LinkedIn profile link:")
+    st.write("Please enter your LinkedIn username")
     username = st.text_input(
         "LinkedIn Username", placeholder="your-username"
     )

@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import os
 
 
-
 def get_profile(profile_id):
     load_dotenv()
     email = os.getenv("email")
@@ -62,8 +61,6 @@ def get_profile(profile_id):
 
 
 
-# print(get_profile("jakob-danninger"))
-# turn profile into json
-with open("profile.json", "w") as f:
-    f.write(str(get_profile("drewpoppleton")))
+print(str(get_profile("jakob-danninger")))
+
 
