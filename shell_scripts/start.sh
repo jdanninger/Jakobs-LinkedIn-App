@@ -7,6 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 STREAMLIT_FILE="main.py"
 NGROK_DOMAIN="jakobs-linkedin-reviewer"
+PORT=8501
 
 # Move to the repo root
 cd "$REPO_ROOT" || {
@@ -27,13 +28,13 @@ else
     exit 1
 fi
 
-# Start Streamlit in the background
-echo "🚀 Launching Streamlit app: $STREAMLIT_FILE"
-streamlit run "$STREAMLIT_FILE" &
+# Start Streamlit on port 8501 in the background
+echo "🚀 Launching Streamlit on port $PORT..."
+streamlit run "$STREAMLIT_FILE" --server.port "$PORT" &
 
 # Give it a few seconds to spin up
 sleep 5
 
-# Start ngrok with the given subdomain
+# Start ngrok with the custom domain
 echo "🌐 Starting ngrok tunnel: https://$NGROK_DOMAIN.ngrok.app"
-ngrok http http://localhost:8501 --hostname="$NGROK_DOMAIN.ngrok.app"
+ngrok http http://localhost:$PORT --hostname="$NGROK_DOMAIN.ngrok.app"
