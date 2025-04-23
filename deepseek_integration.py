@@ -61,5 +61,9 @@ def get_scores(output_text):
     overall = overall.split("/10")[0]
     returnMe['overall'] = float(overall.strip())
 
+    #Notes
+    notes = output_text.split("Final Recommendations")[1]
+    returnMe['notes'] = notes
+
     return returnMe
 

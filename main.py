@@ -12,6 +12,7 @@ st.set_page_config(
 
 st.title("LinkedIn Profile Review")
 st.subheader("Get a rating for your LinkedIn profile")
+st.write("To find your LinkedIn username, which is also your profile ID, simply visit your LinkedIn profile and look at the URL in your browser's address bar. The text after https://www.linkedin.com/in/ is your username.")
 
 def write_score(score, label):
     if score >= 7.5:
@@ -35,6 +36,8 @@ def handle_profile(profile_name):
     write_score(scores['skills'], "Skills")
     write_score(scores['achievements'], "Achievements & Impact")
     write_score(scores['overall'], "Overall Rating")
+    st.subheader("Recommendations")
+    st.markdown(scores['notes'])
 
 
 
