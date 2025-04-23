@@ -63,6 +63,6 @@ if submit_button:
 
 st.markdown(
     """
-    This early version was devloped by Jakob Danninger for Prof Ronal Loui's CSDS285
+    This early version was developed by Jakob Danninger for Prof Ronald Loui's CSDS285
     Source code can be found [here](https://github.com/jdanninger/Jakobs-LinkedIn-App)
     """)
